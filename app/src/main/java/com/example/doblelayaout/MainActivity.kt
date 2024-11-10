@@ -1,14 +1,17 @@
 package com.example.doblelayaout
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnEnviar = findViewById<Button>(R.id.btnEnviar)
 
+        val btnColor = findViewById<Button>(R.id.btnColor)
 
 
         btnEnviar.setOnClickListener {
@@ -35,6 +39,12 @@ class MainActivity : AppCompatActivity() {
                 intento.putExtra("EXTRA_NAME", textito)
                 startActivity(intento)
             }
+        }
+
+        btnColor.setOnClickListener {
+            val randomColor = Color.rgb(Random.nextInt(256),Random.nextInt(256), Random.nextInt(256))
+            val main = findViewById<ConstraintLayout>(R.id.main)
+            main.setBackgroundColor(randomColor)
         }
     }
 }
